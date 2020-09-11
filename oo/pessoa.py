@@ -17,4 +17,10 @@ if __name__ == '__main__':
     print(guilherme.idade)
     for filho in guilherme.filhos:
         print(filho.nome)
-
+#Atributos dinamicos
+    guilherme.sobrenome='Brito'
+    print(guilherme.sobrenome)
+    #del guilherme.filhos
+    print(guilherme.__dict__)
+    print(josemar.__dict__)
+    josemar.sobrenome='santos'
