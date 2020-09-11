@@ -1,4 +1,6 @@
 class Pessoa:
+    olhos = 2
+
     def __init__(self, *filhos, nome=None, idade=35):
         self.idade = idade
         self.nome = nome
@@ -9,7 +11,7 @@ class Pessoa:
 
 
 if __name__ == '__main__':
-    josemar = Pessoa(nome= 'Josemar')
+    josemar = Pessoa(nome='Josemar')
     guilherme = Pessoa(josemar, nome='Guilherme')
     print(Pessoa.cumprimentar(guilherme))
     print(id(guilherme))
@@ -17,10 +19,16 @@ if __name__ == '__main__':
     print(guilherme.idade)
     for filho in guilherme.filhos:
         print(filho.nome)
-#Atributos dinamicos
-    guilherme.sobrenome='Brito'
+    # Atributos dinamicos
+    guilherme.sobrenome = 'Brito'
     print(guilherme.sobrenome)
-    #del guilherme.filhos
+    del guilherme.filhos
+    guilherme.olhos = 1
+    del guilherme.olhos
     print(guilherme.__dict__)
     print(josemar.__dict__)
-    josemar.sobrenome='santos'
+    Pessoa.olhos = 3
+    print(Pessoa.olhos)
+    print(guilherme.olhos)
+    print(josemar.olhos)
+    print(id(Pessoa.olhos), id(guilherme.olhos), id(josemar.olhos))
