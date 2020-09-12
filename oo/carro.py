@@ -1,3 +1,5 @@
+
+
 """
 Você deve criar uma classe carro que vai possuir
 dois atributos compostos por outras duas classes:
@@ -11,7 +13,7 @@ Ele oferece os seguintes atributos:
 2) Método acelerar, que deverá incrementar a velocidade de uma unidade.
 3) Método frear que deverá decrementar a velociade em duas unidades.
 
-A Direção terá a responsabilidade de controlar a direção. Ela oferecerá
+A Direção terá a responsabilidade de controlar a direção. Ela oferece
 os seguintes atributos:
 1) Valor de direção com valores possíveis: Norte, Sul, Leste, Oeste.
 2) Método girar_a_direita.
@@ -22,7 +24,7 @@ O   L
   S
 
     EXEMPLO:
-    >>>#Testando Motor
+    >>> # Testando Motor
     >>> motor = Motor()
     >>> motor.velocidade
     0
@@ -41,7 +43,7 @@ O   L
     >>> motor.frear()
     >>> motor.velocidade
     0
-    >>>#Testando Direção
+    >>> # Testando Direcao
     >>> direcao = Direcao()
     >>> direcao.valor
     'Norte'
@@ -93,3 +95,45 @@ O   L
     >>> carro.calcular_direcao()
     >>> 'Oeste'
 """
+
+
+NORTE = 'Norte'
+SUL = 'Sul'
+LESTE = 'Leste'
+OESTE = 'Oeste'
+
+class Direcao:
+    rotacao_a_esquerda_dct = {
+        NORTE: OESTE, OESTE: SUL, SUL:LESTE, LESTE:NORTE   #metodo chave / valor
+    }
+    def __init__(self):
+        self.valor = NORTE
+
+    def girar_a_direita(self): #metodo if e elif
+        if self.valor == NORTE:
+            self.valor = LESTE
+        elif self.valor == LESTE:
+            self.valor = SUL
+        elif self.valor == SUL:
+            self.valor = OESTE
+        elif self.valor == OESTE:
+            self.valor = NORTE
+    def girar_a_esquerda(self):
+        self.valor = self.rotacao_a_esquerda_dct[self.valor]
+
+class Motor:
+    def __init__(self):
+        self.velocidade = 0
+
+    def acelerar(self):
+        self.velocidade += 1
+
+    def frear(self):
+        self.velocidade -= 2
+        self.velocidade = max(0, self.velocidade)
+
+
+
+
+
+
