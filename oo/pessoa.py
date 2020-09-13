@@ -38,7 +38,6 @@ if __name__ == '__main__':
     del guilherme.olhos
     print(guilherme.__dict__)
     print(josemar.__dict__)
-    Pessoa.olhos = 3
     print(Pessoa.olhos)
     print(guilherme.olhos)
     print(josemar.olhos)
@@ -51,4 +50,4 @@ if __name__ == '__main__':
     print(isinstance(pessoa, Homem))
     print(isinstance(josemar, Pessoa))
     print(isinstance(josemar, Homem))
-
+    print(josemar.olhos)
